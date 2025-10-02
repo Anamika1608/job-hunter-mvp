@@ -18,3 +18,22 @@ model Post {
 
     @@index([name])
 }
+
+model Job {
+    id              Int       @id @default(autoincrement())
+    title           String
+    company         String
+    location        String?
+    employmentType  String?
+    isRemote        Boolean   @default(false)
+    postedAt        DateTime?
+    url             String    @unique
+    source          String
+    description     String?
+    createdAt       DateTime  @default(now())
+    updatedAt       DateTime  @updatedAt
+
+    @@index([title])
+    @@index([company])
+    @@index([postedAt])
+}
