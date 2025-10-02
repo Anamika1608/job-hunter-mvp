@@ -4,3 +4,12 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+/* Dotted gradient background for landing hero */
+.hero-bg {
+  /* Layer 1: subtle dot grid */
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, #0b1220, #0a0f1a);
+  background-size: 24px 24px, auto;
+  background-position: 0 0, center;
+}

@@ -1,53 +1,37 @@
 import Link from "next/link";
 
-import { LatestPost } from "~/app/_components/post";
-import { api, HydrateClient } from "~/trpc/server";
-
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-
-  void api.post.getLatest.prefetch();
-
   return (
-    <HydrateClient>
-      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-        <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-            Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-          </h1>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">First Steps →</h3>
-              <div className="text-lg">
-                Just the basics - Everything you need to know to set up your
-                database and authentication.
-              </div>
-            </Link>
-            <Link
-              className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-              href="https://create.t3.gg/en/introduction"
-              target="_blank"
-            >
-              <h3 className="text-2xl font-bold">Documentation →</h3>
-              <div className="text-lg">
-                Learn more about Create T3 App, the libraries it uses, and how
-                to deploy it.
-              </div>
-            </Link>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-2xl text-white">
-              {hello ? hello.greeting : "Loading tRPC query..."}
-            </p>
-          </div>
-
-          <LatestPost />
+    <main className="hero-bg flex min-h-screen items-center justify-center px-6 text-white">
+      <div className="mx-auto max-w-5xl text-center">
+        <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs text-white/80">
+          <span className="h-2 w-2 rounded-full bg-emerald-400"></span>
+          Now crawling remote-friendly roles
         </div>
-      </main>
-    </HydrateClient>
+        <h1 className="mt-6 text-balance text-5xl font-extrabold tracking-tight sm:text-6xl">
+          Find your next job. Fast.
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-balance text-white/80 sm:text-lg">
+          Job Hunter aggregates fresh listings from a public source into a local database.
+          Search by keywords, filter by company, location, remote, and more—then apply on the original posting.
+        </p>
+        <div className="mt-8 flex items-center justify-center gap-3">
+          <Link
+            href="/jobs"
+            className="rounded-full bg-white px-6 py-3 font-semibold text-black transition hover:bg-white/90"
+          >
+            Browse Jobs
+          </Link>
+          <a
+            href="https://remotive.com/remote-jobs"
+            target="_blank"
+            className="rounded-full border border-white/20 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+            rel="noreferrer"
+          >
+            Data Source
+          </a>
+        </div>
+      </div>
+    </main>
   );
 }
